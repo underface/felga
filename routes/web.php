@@ -21,7 +21,7 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|')->g
    Route::get('/', 'ManageController@index')->name('manage.index');
    Route::get('/panel','ManageController@panel')->name('manage.panel');
 
-   Route::resource('/users', 'UserController');
+   Route::resource('/users', 'UserController', ['names' => ['index'=>'user.index',]]);
 });
 
 Route::prefix('note')->middleware('role:superadministrator|administrator|')->group(function(){

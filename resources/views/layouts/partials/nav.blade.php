@@ -91,6 +91,8 @@
 
 				    <ul class="dropdown-menu" role="menu">
 					   <li><a>{{ Auth::user()->name }}</a></li><li role="separator" class="divider"></li>
+					   <li><a href="{{ route('user.index')}}">Użytkownicy</a>
+					   </li>
 					   <li>
 						<a> <i class="fa fa-usd" aria-hidden="true"></i> 	Balans konta SMS<br />
 							<span class="label label-default">{{ $smsbalance/100}}</b> zł. (tj. {{ round($smsbalance/6) }} SMS)</span>
