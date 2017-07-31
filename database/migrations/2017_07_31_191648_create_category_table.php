@@ -13,7 +13,7 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorys', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
 		   $table->increments('id')->unsign();
              $table->string('name')->unique();
              $table->timestamps();
@@ -27,7 +27,7 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::table('categorys', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             //
         });
     }

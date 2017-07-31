@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
    protected $table = 'customers';
-   
+
     public function notes()
     {
        return $this->hasMany('App\Note');
+    }
+
+    public function categories()
+    {
+       return $this->hasMany('App\Category');
     }
 }
