@@ -10,3 +10,7 @@ body { padding-top: 70px;!important; }
 .badge-danger{
    background-color: #D9462F;
 }
+
+.panel, .label, .btn{
+	border-radius: 0;
+}
