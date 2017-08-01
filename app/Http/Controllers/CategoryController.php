@@ -28,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+	    $categories = Category::all();
+        return view('category.create')->withCategories($categories);
     }
 
     /**
@@ -73,7 +74,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+	    $categories = Category::all();
+ 	   return view('category.index')->withCategories($categories);
     }
 
     /**
@@ -85,7 +87,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+	    $categories = Category::all();
+ 	  return view('category.index')->withCategories($categories);
     }
 
     /**
@@ -96,6 +99,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+	    $categories = Category::all();
+ 	  return view('category.index')->withCategories($categories);
     }
 }

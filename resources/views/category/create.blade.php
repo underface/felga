@@ -17,14 +17,22 @@
 				   </ul>
 			   </div>
               @endif
-
-
 		    <div class="row">
+
 			    <div class="col-md-6 col-md-offset-3">
+				    @if(count($categories))
+					    <div class="well well-sm">
+						Istniejące karegorie:
+						@foreach ($categories as $category)
+							<span class="label label-default">{{ $category->name }}</span>
+						@endforeach
+					    </div>
+				    @endif
+				    <hr />
 	                 {!! Form::open(array('route' => 'category.store')) !!}
 	                 <div class="form-group">
 	                    {!! Form::label('name', 'Nazwa kategorii (unikalna) ') !!}
-	                    {!! Form::text('name',null, array('class'=>'form-control input-lg', 'required'=>'','minlength' => '3', 'maxlength'=>'50', 'style'=>'text-transform:uppercase' )) !!}
+	                    {!! Form::text('name',null, array('class'=>'form-control input-lg', 'required'=>'','minlength' => '3', 'maxlength'=>'50' )) !!}
 	                 </div>
 	                 <div class="form-group">
 	                    {!! Form::label('description', 'Opis Kategorii') !!}

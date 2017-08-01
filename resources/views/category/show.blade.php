@@ -60,7 +60,7 @@
 		                         <td>{{$customer->number_phone}}</td>
 		 				    <td>
 		 					    @foreach ($customer->categories as $category)
-		 						    <span class="label label-default">#{{ $category->name }}</span>
+		 						    <span class="label label-default"><a href="{{ route('category.show', $category->id) }}">#{{ $category->name }}</a></span>
 
 		 					    @endforeach
 

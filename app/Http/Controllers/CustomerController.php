@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Customer;
 use App\Note;
 use App\User;
+use App\Category;
 use Auth;
 use Session;
 
@@ -14,17 +15,20 @@ class CustomerController extends Controller
 {
     public function index ()
     {
-      $customers = Customer::orderBy('id', 'asc')->paginate(10);
+      $customers = Customer::orderBy('name', 'asc')->paginate(10);
       return view('customer.index')->withCustomers($customers);
    }
 
    public function create()
    {
-      return view('customer.create');
+	   $categories = new Category;
+	   $categories = Category::all();
+      return view('customer.create')->withCategories($categories);
    }
 
    public function store(Request $request)
    {
+
       $this->validate($request, array(
          'name'         => 'required|min:6|max:255',
          'number_phone' => 'unique:customers|required|min:9|max:9'
@@ -33,7 +37,7 @@ class CustomerController extends Controller
       $customer->name         = Str::upper($request->name);
       $customer->number_phone = $request->number_phone;
       $customer->save();
-
+	 $customer->categories()->attach($request->categories);
       return view('customer.store')->withCustomer($customer);
    }
 
@@ -44,10 +48,19 @@ class CustomerController extends Controller
 
       $notes = new Note;
       $notes = Note::where('customer_id', $id)->orderBy('updated_at', 'desc')->paginate(15);
+      return view('customer.show')
+	 		->withCustomer($customer)
+	 		->withNotes($notes)
+			->withData(date('d-m-Y'))
+	 		->withCategories($categories = Category::all());
+   }
 
-      $data = date('d-m-Y');
+   public function add_category(Request $request)
+   {
+	   $customer = Customer::findorfail($request->customer_id);
+	   $customer->categories()->sync($request->categories);
 
-      return view('customer.show')->withCustomer($customer)->withNotes($notes)->withData($data);
+	   return redirect()->route('customer.show', $request->customer_id);
    }
 
    public function addNote (Request $request)

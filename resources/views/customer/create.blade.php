@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('scripts')
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+@endsection
+
 @section('content')
    <div class="container">
       <div class="panel panel-default">
@@ -27,14 +32,25 @@
             <div class="col-md-6 col-md-offset-3">
                {!! Form::open(array('route' => 'customer.store')) !!}
                <div class="form-group">
-                  {!! Form::label('name', 'Imię i Nazwisko ') !!}
+                  {!! Form::label('name', 'Imię i Nazwisko:') !!}
                   {!! Form::text('name',null, array('class'=>'form-control input-lg', 'required'=>'','minlength' => '6', 'maxlength'=>'255', 'style'=>'text-transform:uppercase' )) !!}
                </div>
                <div class="form-group">
-                  {!! Form::label('number_phone', 'Numer Telefonu') !!}
+                  {!! Form::label('number_phone', 'Numer Telefonu:') !!}
                   {!! Form::text('number_phone',null, array('class'=>'form-control input-lg', 'required'=>'','minlength' => '9','maxlength' => '9', 'onkeypress'=>'return isNumberKey(event)' )) !!}
                </div>
-                  {!! Form::submit('Zapisz', array('class'=>'btn btn-primary btn-lg btn-block','style'=>'margin:20px 0 20px 0')) !!}
+
+			@if(count($categories))
+				<div class="form-group">
+					{!! Form::label('categories', 'Wybierz kategorię:') !!}
+					@foreach ($categories as $category)
+						<label class="form-control"><input  type="checkbox" name="categories[]" value="{{$category->id}}" /> {{$category->name}}</label>
+					@endforeach
+
+				</div>
+			@endif
+
+               {!! Form::submit('Zapisz', array('class'=>'btn btn-primary btn-lg btn-block','style'=>'margin:20px 0 20px 0')) !!}
                {!! Form::close() !!}
             </div>
 

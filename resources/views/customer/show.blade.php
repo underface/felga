@@ -41,22 +41,36 @@
                   <h4>Dane Klienta <span class="label label-default">ID: #{{ $customer->id}}</span></h4>
                </div>
                <div class="panel-body">
-                  <table>
-                     <tbody>
-                        <tr>
-                           <td><small>Imię i Nazwisko:</small></td>
-                           <td><h3>{{ $customer->name}}</h3></td>
-                        </tr>
-                        <tr>
-                           <td><small>Numer Tel:</small></td>
-                           <td><h3>{{ $customer->number_phone}}</h3></td>
-                        </tr>
-                     </tbody>
-                  </table>
+				<label><small>Imię i Nazwisko:</small></label>
+				<h4>{{ $customer->name}}</h4>
+				<label><small>Numer telefonu:</label>
+				<h4>{{ $customer->number_phone}}</h4>
+               </div>
+			<div class="panel-footer">
+				{!! Form::open(array('route' => 'customer.add_category')) !!}
+					{{ Form::hidden('customer_id', $customer->id) }}
+					@if(count($categories))
+						<div class="form-group">
+							<label><i class="fa fa-tags" aria-hidden="true"></i> Wybierz kategorię:</label><br />
 
+							@foreach ($categories as $category)
+								<label class="btn-block btn btn-sm btn-default" > <input  type="checkbox" name="categories[]" value="{{$category->id}}"
+									@foreach ($customer->categories as $check_category)
+										@if ($check_category->id == $category->id)
+											checked
+										@endif
+									@endforeach
+									/> {{$category->name}}</label>
+							@endforeach
+
+						</div>
+					@endif
+
+	               {!! Form::submit('Edytuj Kategorie', array('class'=>'btn btn-primary btn-block','style'=>'margin:5px 0 5px 0')) !!}
+	               {!! Form::close() !!}
 
                </div>
-               <div class="panel-footer">
+               <div class="panel-footer	">
                   <button type="button" class="btn btn-success btn-block btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Dodaj Notatkę</button>
                   <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target=".bs-example-modal-smSMS"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i> Wyślij SMSa</button>
 

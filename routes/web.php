@@ -47,6 +47,7 @@ Route::prefix('customer')->middleware('role:superadministrator|administrator|')-
    Route::get('/','CustomerController@index')->name('customer.index');
    Route::get('/create', 'CustomerController@create')->name('customer.create');
    Route::post('/store', 'CustomerController@store')->name('customer.store');
+   Route::post('/add_category', 'CustomerController@add_category')->name('customer.add_category');
    Route::get('/show/{id}', 'CustomerController@show')->name('customer.show')->where('id', '[0-9]+');
    Route::put('/delNotification/{id}','CustomerController@delNotification')->name('customer.delNotification')->where('id','[0-9]+');	//PUT - update| POST-dodanie | delete - usunięcie
    Route::delete('/destroy/{id}','CustomerController@destroy')->name('customer.destroy')->where('id','[0-9]+');                       //usuwanie notatki
