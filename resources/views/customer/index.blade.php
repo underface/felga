@@ -21,8 +21,6 @@
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 
          <div class="panel-body">
@@ -33,6 +31,7 @@
                      <th>ID.</th>
                      <th>Imię i Nazwisko</th>
                      <th>Numer Telefonu</th>
+				 <th>Kategoria</th>
                      <th></th>
                   </tr>
                </thead>
@@ -42,6 +41,13 @@
                         <td>{{$customer->id}}</td>
                         <td><a href="{{route('customer.show', $customer->id)}}">{{$customer->name}}</a></td>
                         <td>{{$customer->number_phone}}</td>
+				    <td>
+					    @foreach ($customer->categories as $category)
+						    <span class="label label-default">#{{ $category->name }}</span>
+
+					    @endforeach
+
+				    </td>
                         <td><a href="{{route('customer.show', $customer->id)}}" class="btn btn-info btn-sm pull-right"> <i class="fa fa-address-card-o fa-lg" aria-hidden="true"></i> Profil & Notatki</a></td>
                      </tr>
 

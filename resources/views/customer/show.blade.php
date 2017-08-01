@@ -146,6 +146,22 @@
 
 <!-- Panel z notatkami-->
          <div class="col-md-9">
+
+		    @if(count($customer->categories))
+			    <div class="panel panel-default">
+			    		<div class="panel-body">Kategorie:
+			    			@foreach ($customer->categories as $category)
+							<button class="btn btn-primary">#{{ $category->name }}</button>
+
+			    			@endforeach
+			    		</div>
+			    </div>
+	    		@endif
+
+
+
+
+
             <div class="panel panel-default">
                <div class="panel-heading">
                      <h4>  Notatki

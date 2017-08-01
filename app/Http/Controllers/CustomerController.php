@@ -154,6 +154,7 @@ class CustomerController extends Controller
 	   $customer = Customer::where('number_phone','=', $number)->first();
 	   return redirect()->route('customer.show', $customer->id);
   }
+
   public function searchbox()
   {
   	return view('customer.searchbox');
@@ -162,10 +163,10 @@ class CustomerController extends Controller
   public function search(Request $request)
   {
 	  $this->validate($request, array(
-		  'search' => 'required|min:5'
+		  'search' => 'required|min:3'
 	  ));
 
-	  $customers = Customer::where('number_phone', '=', $request->search)->orwhere('name', 'Like', "%".$request->search."%")->orderby('name','asc')->get();
+	  $customers = Customer::where('number_phone', '=', $request->search)->orwhere('name', 'Like', "%".$request->search."%")->orderby('name','asc')->paginate(10);
 	  Session::flash('message', "Wyniki wyszukiwania: ". $customers->count());
    	  return view('customer.index')->withCustomers($customers);
   }

@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-	public function customer()
+	public function customers()
      {
-        return $this->hasMany('App\Customer');
+        return $this->belongsToMany('App\Customer');
      }
+
+	public function getRouteByName()
+	{
+		return 'name';
+	}
 }

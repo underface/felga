@@ -40,7 +40,8 @@
 						  <span class="label label-danger">{{ $notification_count }}</span>
 					 @else
 						  <span class="label label-default">0</span>
-					 @endif<span class="caret"></span>
+					 @endif
+					 <span class="caret"></span>
 			     </a>
 
 			     <ul class="dropdown-menu" role="menu">
@@ -80,6 +81,19 @@
 						 <li><a href="{{ route('customer.searchbox') }}"><i class="fa fa-search" aria-hidden="true"></i> Szukaj</a></li>
 					  </ul>
 				    </li>
+
+				    <!--Dropdowno Klienci-->
+				   <li class="dropdown">
+					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						<i class="fa fa-tags" aria-hidden="true"></i> Kategorie  <span class="caret"></span>
+					 </a>
+
+					 <ul class="dropdown-menu" role="menu">
+						<li><a href="{{ route('category.index') }}"><i class="fa fa-tags" aria-hidden="true"></i> Lista Kategorii</a></li><li role="separator" class="divider"></li>
+						<li><a href="{{ route('category.create') }}"><i class="fa fa-tag" aria-hidden="true"></i> Dodaj Nową kategorię</a></li>
+
+					 </ul>
+				   </li>
 
 
 			     <li class="dropdown">

@@ -14,7 +14,7 @@
                {!! Form::open(array('route' => 'customer.search')) !!}
                <div class="form-group">
                   {!! Form::label('search', 'Numer telefonu lub nazwa klienta') !!}
-                  {!! Form::text('search',null, array('class'=>'form-control input-lg', 'minlength'=>'5' ,'required'=>'','placeholder'=>'Wpisz numer telefonu lub nazwa klienta...', 'style'=>'text-transform:uppercase' )) !!}
+                  {!! Form::text('search',null, array('class'=>'form-control input-lg', 'minlength'=>'3' ,'required'=>'','placeholder'=>'Wpisz numer telefonu lub nazwa klienta...', 'style'=>'text-transform:uppercase' )) !!}
                </div>
 
                   {!! Form::submit('Szukaj', array('class'=>'btn btn-primary btn-lg btn-block','style'=>'margin:20px 0 20px 0')) !!}
