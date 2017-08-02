@@ -37,6 +37,7 @@
 
 
             <div class="panel panel-default">
+			  {!! Form::open(array('route' => 'customer.store')) !!}
                <div class="panel-heading">
 				<h4>Klienci</h4>
                </div>
@@ -53,6 +54,7 @@
 		                   </tr>
 		                </thead>
 		                <tbody>
+
 		                   @foreach ($category->customers as $customer)
 		                      <tr>
 		                         <td><input type="checkbox" name="customer_id[]" value="{{ $customer->id }}"  class="form-controll"/></td>
@@ -76,8 +78,14 @@
 	 	  	</div>
                </div>
                <div class="panel-footer text-center">
+				<div class="form-group">
+				   {!! Form::label('content', 'Treść wiadomości:') !!}
+				   {!! Form::text('content',null, array('class'=>'form-control ', 'required'=>'', )) !!}
+				</div>
 
+				{!! Form::submit('Wyślij', array('class'=>'btn btn-primary btn-lg ','style'=>'margin:5px 0px')) !!}
                </div>
+			{!! Form::close() !!}
             </div>
          </div>
       </div>
