@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Category;
+use App\Customer;
 
 class CategoryController extends Controller
 {
@@ -64,6 +65,16 @@ class CategoryController extends Controller
 	   $category = new Category;
 	   $category = Category::findOrFail($id);
 	   return view('category.show')->withCategory($category);
+    }
+
+
+    public function send(Request $request)
+    {
+	    foreach($request->customer_id as $customer_id)
+	    {
+		    $customer =	Customer::where('id', $customer_id)->first();
+		    echo $customer->name. " ". $request->content."<br />";
+	    }
     }
 
     /**

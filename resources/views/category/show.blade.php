@@ -37,7 +37,7 @@
 
 
             <div class="panel panel-default">
-			  {!! Form::open(array('route' => 'customer.store')) !!}
+			  {!! Form::open(array('route' => 'sendSMS.send')) !!}
                <div class="panel-heading">
 				<h4>Klienci</h4>
                </div>
@@ -77,13 +77,13 @@
 		             </table>
 	 	  	</div>
                </div>
-               <div class="panel-footer text-center">
+               <div class="panel-footer ">
 				<div class="form-group">
 				   {!! Form::label('content', 'Treść wiadomości:') !!}
-				   {!! Form::text('content',null, array('class'=>'form-control ', 'required'=>'', )) !!}
+				   {!! Form::textarea('content',null, array('class'=>'form-control ', 'required'=>'', 'rows'=>'3', 'placeholder'=> 'Tu wpisz treść wiadomości SMS' )) !!}
 				</div>
 
-				{!! Form::submit('Wyślij', array('class'=>'btn btn-primary btn-lg ','style'=>'margin:5px 0px')) !!}
+				{!! Form::submit('Wyślij', array('class'=>'btn btn-primary ','style'=>'margin:5px 0px')) !!}
                </div>
 			{!! Form::close() !!}
             </div>

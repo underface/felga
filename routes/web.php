@@ -32,7 +32,11 @@ Route::prefix('category')->middleware('role:superadministrator|administrator|')-
 		Route::post('/store', 'CategoryController@store')->name('category.store');
 		Route::get('/show/{id}', 'CategoryController@show')->name('category.show');
 
+		//wysylanie smsów do grupy z kategorii
+		Route::post('/sendSMS', 'CategoryController@send')->name('sendSMS.send');
+
 });
+
 
 Route::prefix('note')->middleware('role:superadministrator|administrator|')->group(function(){
    Route::get('/','NoteController@index')->name('note.index');
