@@ -15,10 +15,10 @@
 
 
 			  @foreach ($users as $user)
-				  <div class="col-md-6">
+				  <div class="col-md-3">
 					  <div class="panel panel-default">
 						  <div class="panel-heading">
-							<h4>{{ $user->name }} <small>{{$user->email}}</small></h4>
+							<h4>{{ $user->name }} <small><br />{{$user->email}}</small></h4>
 
 						  </div>
 						  <div class="panel-body">

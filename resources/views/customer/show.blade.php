@@ -1,29 +1,5 @@
 @extends('layouts.app')
 
-@section('scripts')
-   <!-- Bootstrap Date-Picker Plugin -->
-
-
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js_X'></script>
-
-   <script>
-      tinymce.init({
-      selector: 'textarea',
-      height: 200,
-      menubar: false,
-      plugins: [
-      'advlist autolink lists link charmap',
-      'insertdatetime media table contextmenu paste code'
-      ],
-      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist',
-      content_css: [
-      '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-      '//www.tinymce.com/css/codepen.min.css']
-      });
-   </script>
-
-@endsection
-
 @section('content')
 
    <div class="container">
@@ -45,6 +21,8 @@
 				<h4>{{ $customer->name}}</h4>
 				<label><small>Numer telefonu:</label>
 				<h4>{{ $customer->number_phone}}</h4>
+				<label><small>Dodano:</label>
+				<h5>{{ $customer->created_at}}</h5>
                </div>
 			<div class="panel-footer">
 				{!! Form::open(array('route' => 'customer.add_category')) !!}
