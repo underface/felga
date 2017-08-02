@@ -11,7 +11,7 @@ body { padding-top: 70px;!important; }
    background-color: #D9462F;
 }
 
-.panel, .label, .btn, .well{
+.panel, .label, .btn, .well, .alert, .form-control{
 	border-radius: 0;
 }
 

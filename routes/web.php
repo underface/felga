@@ -29,13 +29,15 @@ Route::prefix('category')->middleware('role:superadministrator|administrator|')-
 	// Category
 		Route::get('/', 'CategoryController@index')->name('category.index');
 		Route::get('/create', 'CategoryController@create')->name('category.create');
-		Route::post('/category/store', 'CategoryController@store')->name('category.store');
+		Route::post('/store', 'CategoryController@store')->name('category.store');
 		Route::get('/show/{id}', 'CategoryController@show')->name('category.show');
 
 });
 
 Route::prefix('note')->middleware('role:superadministrator|administrator|')->group(function(){
    Route::get('/','NoteController@index')->name('note.index');
+   Route::get('/create','NoteController@create')->name('note.create');
+   Route::post('/store','NoteController@store')->name('note.store');
    Route::get('/notification/{task?}','NoteController@notification')->name('note.notification');
    Route::put('/delNotification/{id}','NoteController@delNotification')->name('note.delNotification')->where('id','[0-9]+');
    Route::delete('/destroy/{id}','NoteController@destroy')->name('note.destroy')->where('id','[0-9]+');

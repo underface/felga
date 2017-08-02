@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Note;
 use Auth;
 use Session;
+
+use App\Note;
+use App\Customer;
+use App\Category;
 
 class NoteController extends Controller
 {
@@ -80,5 +83,26 @@ class NoteController extends Controller
   	return redirect()->route('note.notification');
   }
 
+	public function create()
+	{
+		$categories = Category::all();
+		return view('note.create')->withCategories($categories);
+	}
+
+	public function store(Request $request)
+	{
+		$categories = Category::all();
+		switch($request->submitbutton)
+		{
+			case "check":
+				$customer = Customer::where('number_phone',$request->number_phone)->first();
+				return view('note.create')->withCustomer($customer)->withCategories($categories);
+				break;
+
+			case "save":
+				return "store";
+				break;
+		}
+	}
 
 }
