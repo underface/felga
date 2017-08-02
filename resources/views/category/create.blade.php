@@ -24,7 +24,7 @@
 					    <div class="well well-sm">
 						Istniejące karegorie:
 						@foreach ($categories as $category)
-							<span class="label label-default">{{ $category->name }}</span>
+							<a href="{{ route('category.show', $category->id)}}"><span class="label label-default">{{ $category->name }}</span></a>
 						@endforeach
 					    </div>
 				    @endif
@@ -32,11 +32,11 @@
 	                 {!! Form::open(array('route' => 'category.store')) !!}
 	                 <div class="form-group">
 	                    {!! Form::label('name', 'Nazwa kategorii (unikalna) ') !!}
-	                    {!! Form::text('name',null, array('class'=>'form-control input-lg', 'required'=>'','minlength' => '3', 'maxlength'=>'50' )) !!}
+	                    {!! Form::text('name',null, array('class'=>'form-control input-lg', 'required'=>'','minlength' => '3', 'maxlength'=>'50', 'placeholder'=> 'Unikatowa nazwa' )) !!}
 	                 </div>
 	                 <div class="form-group">
 	                    {!! Form::label('description', 'Opis Kategorii') !!}
-	                    {{ Form::textarea('description',null, array('class'=>'form-control', 'required'=>'', 'rows'=>'3','minlength'=>'5', 'maxlength'=>'100' )) }}
+	                    {{ Form::textarea('description',null, array('class'=>'form-control', 'required'=>'', 'rows'=>'3','minlength'=>'5', 'maxlength'=>'100', 'placeholder'=> 'Opis kategorii ...' )) }}
 	                 </div>
 	                    {!! Form::submit('Dodaj', array('class'=>'btn btn-primary btn-lg btn-block','style'=>'margin:20px 0 20px 0')) !!}
 	                 {!! Form::close() !!}
