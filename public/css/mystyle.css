@@ -11,7 +11,7 @@ body { padding-top: 70px;!important; }
    background-color: #D9462F;
 }
 
-.panel, .label, .btn, .well, .alert, .form-control{
+.panel, .label, .btn, .well, .alert, .form-control, .panel-heading {
 	border-radius: 0;
 }
 
@@ -20,8 +20,4 @@ body { padding-top: 70px;!important; }
 }
 .label a:hover{
 	color:#ccc;
-}
-
-input[type=checkbox]{
-
 }

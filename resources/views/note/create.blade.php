@@ -16,13 +16,28 @@
 					</ul>
 				</div>
 			@endif
+
+			@if(Session::has('message'))
+			   <div class="alert alert-info alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				{{ Session::get('message') }}
+			   </div>
+			@endif
+			@if(Session::has('message2'))
+			   <div class="alert alert-info alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				{{ Session::get('message2') }} Jeśli chcesz przejdź do profilu klienta <a href="{{ route('customer.show', Session::get('customer_id')) }}" class="btn btn-info btn-sm">Przejdź</a>
+			   </div>
+			@endif
+
+
 			{!! Form::open(array('route' => 'note.store')) !!}
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group ">
 							<label for="number_phone">Numer Telefonu</label>
 							<div class="input-group">
-								<input type="text" class="form-control" id="number_phone" name="number_phone" placeholder="Wpisz numer telefonu aby wyszukać klienta"
+								<input type="text" class="form-control" id="number_phone" name="number_phone" minlength="9" maxlength="9" placeholder="Wpisz numer telefonu aby wyszukać klienta"
 								@isset($customer->number_phone)
 								value = "{{ $customer->number_phone }} - {{ $customer->name }}" readonly
 								@endisset
@@ -41,7 +56,7 @@
 						<!-- Input jeśli nie znaleziono klienta-->
 						<div class="form-group ">
 							<label for="name">Imię i nazwisko:</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Wpisz Imię i nazwisko"
+							<input type="text" class="form-control" id="name" name="name" placeholder="Wpisz Imię i nazwisko" style="text-transform:uppercase"
 								@isset($customer->number_phone)
 								value = "{{ $customer->name }}" disabled
 								@endisset
@@ -74,11 +89,11 @@
 						<div class="btn-group" >
 							{!! Form::label('-','Wybierz typ notatki') !!}
 							<div class="form-group" data-toggle="buttons">
-								<label class="btn btn-primary  active">
-									<input type="radio" name="notification" id="option_0" value="0" checked>Zwykła Notatka
+								<label class="btn btn-default  active">
+									<input type="radio" name="notification" id="option_0" value="0" checked><i class="fa fa-commenting" aria-hidden="true"></i> Zwykła Notatka
 								</label>
-								<label class="btn btn-primary">
-									<input type="radio" name="notification" id="option_1" value="1" > Notatka z przypomnieniem
+								<label class="btn btn-danger">
+									<input type="radio" name="notification" id="option_1" value="1" ><i class="fa fa-bell" aria-hidden="true"></i> Notatka z przypomnieniem
 								</label>
 							</div>
 						</div>

@@ -30,6 +30,9 @@
 							    {{  $category->description }}
 						    </div>
 						    <div class="panel-footer text-center">
+						    		Zainteresowanych klientów: <strong><i class="fa fa-user" aria-hidden="true"></i> {{ $category->customers()->count() }}</strong>
+						    </div>
+						    <div class="panel-footer text-center">
 						    		<a href="{{ route('category.show',$category->id )}}" class="btn btn-sm btn-primary btn-block"><i class="fa fa-chevron-circle-right fa-lg" aria-hidden="true"></i> Sprawdź klientów</a>
 						    </div>
 

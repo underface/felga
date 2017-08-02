@@ -3,6 +3,44 @@
 
 @section('content')
     <div class="container">
+	    <div class="col-md-4 col-sm-12">
+  		  <div class="panel panel-danger">
+  		     <div class="panel-heading">
+  		  	   <h4><i class="fa fa-external-link" aria-hidden="true"></i> Szybkie Linki</h4>
+  		     </div>
+  		     <div class="panel-body">
+
+  				<h4>Notatki</h4>
+  				<ul>
+  					<li><a a href="{{ route('note.index') }}">Lista notatek</a></li>
+  					<li><a a href="{{ route('note.create') }}">Dodaj notatkę</a></li>
+  					<li><a a href="{{ route('note.notification') }}">Sprawdź powiadomienia</a></li>
+  				</ul>
+  				<hr />
+  				<h4>Klienci</h4>
+  				<ul>
+  					<li><a a href="{{ route('customer.index') }}">Lista klientów</a></li>
+  					<li><a a href="{{ route('customer.create') }}">Dodaj klienta</a></li>
+  					<li><a a href="{{ route('customer.searchbox') }}">Szukaj klienta</a></li>
+  				</ul>
+  				<hr />
+  				<h4>Kategorie</h4>
+  				<ul>
+  					<li><a a href="{{ route('category.index') }}">Lista kategorii</a></li>
+  					<li><a a href="{{ route('category.create') }}">Dodaj kategorię</a></li>
+  				</ul>
+  				<hr />
+				<ul>
+					<li><a href="{{ route('logout') }}"
+					    onclick="event.preventDefault();
+							   document.getElementById('logout-form').submit();">
+					    Wyloguj
+					</a></li>
+				</ul>
+  		     </div>
+  		  </div>
+  	  </div>
+
        <div class="col-md-4 col-sm-12">
 		  <div class="list-group">
 		    <li class="list-group-item active"><h4><i class="fa fa-bell fa-lg" aria-hidden="true"></i></span> Powiadomienia</h4></li>
@@ -13,25 +51,13 @@
 		  </div>
 	  </div>
 	  <div class="col-md-4 col-sm-12">
-		  <div class="panel panel-success">
-			<div class="panel-heading">
-				<h4 >Dodatkowy panel</h4>
-			</div>
-			<div class="panel-body">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</div>
+		  <div class="list-group">
+		    <li class="list-group-item active"><h4><i class="fa fa-tags fa-lg" aria-hidden="true"></i></span> Kategorie</h4></li>
+		    @foreach ($categories as $category)
+			    <a href="{{ route('category.show', $category->id) }}" class="list-group-item"><i class="fa fa-tag" aria-hidden="true"></i> <strong>{{ $category->name}}</strong> - Zainteresowanych klientów: <strong><i class="fa fa-user" aria-hidden="true"></i> {{ $category->customers()->count() }}</strong></a>
+		    @endforeach
 		  </div>
+	  </div>
 
-	  </div>
-	  <div class="col-md-4 col-sm-12">
-		  <div class="panel panel-danger">
-		     <div class="panel-heading">
-		  	   <h4>Dodatkowy panel #2</h4>
-		     </div>
-		     <div class="panel-body">
-		  	   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		     </div>
-		  </div>
-	  </div>
     </div>
 @endsection

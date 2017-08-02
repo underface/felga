@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use Auth;
 use Session;
 
@@ -96,11 +98,43 @@ class NoteController extends Controller
 		{
 			case "check":
 				$customer = Customer::where('number_phone',$request->number_phone)->first();
+				Session::flash('message', 'Znaleziono klienta.');
 				return view('note.create')->withCustomer($customer)->withCategories($categories);
 				break;
 
 			case "save":
-				return "store";
+
+				if(isset($request->customer_id))
+				{
+					$customer_id = (int)$request->customer_id;
+					$customer = Customer::where('id', $customer_id)->first();
+
+				}
+				if(!isset($request->customer_id))
+				{
+					$this->validate($request, array(
+						'number_phone' => 'unique:customers|min:9|max:9'
+					));
+					$customer = new Customer;
+					$customer->name 	    = $request->name;
+					$customer->number_phone = $request->number_phone;
+					$customer->save();
+
+				}
+
+				$customer->categories()->sync($request->categories);
+
+				$note = new Note;
+				$note ->customer_id 	= $customer->id;
+				$note->user_id           = Auth::user()->id;
+				$note->notification      = $request->notification;
+				$note->notification_date = $request->notification_date;
+				$note->title             = Str::upper($request->title);
+				$note->content           = $request->content;
+				$note->save();
+				Session::flash('message2', 'Dodano notatkę!');
+				Session::flash('customer_id',$customer->id);
+				return redirect()->route('note.create');
 				break;
 		}
 	}

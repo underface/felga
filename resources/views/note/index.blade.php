@@ -5,7 +5,7 @@
       <div class="panel panel-default">
          <div class="panel-heading">
             <h3>Notatki
-               <a href="#" class="btn btn-primary pull-right "><i class="fa fa-plus-circle" aria-hidden="true"></i> Nowa Notatka</a>
+               <a href="{{ route('note.create') }}" class="btn btn-primary pull-right "><i class="fa fa-plus-circle" aria-hidden="true"></i> Nowa Notatka</a>
             </h3>
          </div>
          <div class="panel-body">

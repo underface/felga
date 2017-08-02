@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 
+use App\Category;
+
 class HomeController extends Controller
 {
     /**
@@ -24,11 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-    public function error_403()
-    {
-	   Session::flash('message', "Brak dostępu lub strona nie istnieje!");
-	   return view('layouts.exception');
+	    $categories = Category::all();
+        return view('home')->withCategories($categories);
     }
 }

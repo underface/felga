@@ -65,7 +65,7 @@
 						<li><a href="{{ route('note.index') }}"><i class="fa fa-sticky-note" aria-hidden="true"></i> Lista Notatek</a></li><li role="separator" class="divider"></li>
 						<li><a href="{{ route('note.create') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Dodaj Notatkę</a></li><li role="separator" class="divider"></li>
 						<li><a href="{{ route('note.notification') }}"><i class="fa fa-bell" aria-hidden="true"></i> Powiadomienia</a></li><li role="separator" class="divider"></li>
-						<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i> Szukaj</a></li>
+						<!--<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i> Szukaj</a></li>-->
 					</ul>
 				    </li>
 
