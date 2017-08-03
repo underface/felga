@@ -22,7 +22,7 @@
 
 						  </div>
 						  <div class="panel-body">
-							<h5>Role:</h5>
+							<h4>Role:</h4>
 							<ul>
 
 								@foreach ($user->roles as $role)
@@ -33,7 +33,6 @@
 								<hr />
 							<h5>Uprawnienia:</h5>
 							<ul>
-
 								@foreach ($user->permissions as $permission)
 									<li>{{$permission->display_name}} <small>({{ $permission->name }})</small>
 									</li>
