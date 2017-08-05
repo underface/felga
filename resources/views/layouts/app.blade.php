@@ -15,6 +15,7 @@
 
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+	 <link href="{{ asset('css/loader.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     @yield('scripts')
@@ -31,6 +32,11 @@
 
 </head>
 <body>
+<div id="loader-wrapper">
+    <div class="load">
+      <hr/><hr/><hr/><hr/>
+    </div>
+	 </div>
     <div id="app">
 
 
@@ -40,8 +46,22 @@
         @yield('content')
     </div>
 
+
     <!-- Scripts -->
    <script src="{{ asset('js/app.js') }}"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+	$('html').addClass('js');
+
+	$(window).load(function() {
+	    setTimeout(
+	      function()
+	      {
+	          $("#loader-wrapper").fadeOut();
+	      });
+	});
+	</script>
 
 </body>
 </html>
