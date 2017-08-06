@@ -130,3 +130,10 @@
 	   </div>
     </div>
 </nav>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="alert alert-danger" role="alert"><strong>UWAGA!</strong> System demonstaracyjny. Loginy i hasła testowe. Wprowadzane dane będą kasowane.</div>
+		</div>
+	</div>
+</div>
