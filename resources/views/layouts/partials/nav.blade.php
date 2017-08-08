@@ -97,18 +97,37 @@
 
 					<li><a href="{{ route('manage.profil')}}"><i class="fa fa-bars" aria-hidden="true"></i> Mój profil</a></li>
 
+					<!-- menu superadmin-->
+
+					@role('superadministrator|administrator')
+					<!--Dropdowno Klienci-->
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					  <i class="fa fa-lock" aria-hidden="true"></i> Zarządzanie pracowniakami <span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu" role="menu">
+					  <li><a href="#">Lista pracowników</a></li>
+					  <li><a href="#">Dodawanie pracowników</a></li>
+					  <li><a href="#">Zarządzanie uprawnieniami</a></li>
+
+					  <li><a href="{{ route('manage.test')}}">test</a> </li>
+
+					</ul>
+					</li>
+
+					@endrole
+
+
+
 			     <li class="dropdown">
 				    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 					   {{ Auth::user()->name }}  <span class="caret"></span>
 				    </a>
 
-
-
 				    <ul class="dropdown-menu" role="menu">
 					   <li><a href="{{ route('manage.profil')}}">Profil: {{ Auth::user()->name }}</a></li>
 						<li role="separator" class="divider"></li>
-					   <li><a href="{{ route('user.index')}}">Użytkownicy</a> </li>
-						 <li><a href="{{ route('manage.test')}}">test</a> </li>
 					   <li>
 						<a> <i class="fa fa-usd" aria-hidden="true"></i> 	Balans konta SMS<br />
 							<span class="label label-default">{{ $smsbalance/100}}</b> zł. (tj. {{ round($smsbalance/6) }} SMS)</span>
@@ -132,6 +151,7 @@
 	   </div>
     </div>
 </nav>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">

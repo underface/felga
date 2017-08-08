@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::prefix('manage')->middleware('role:superadministrator|administrator|')->group(function(){
@@ -63,4 +64,4 @@ Route::prefix('customer')->middleware('role:superadministrator|administrator|')-
    Route::post('/search', 'CustomerController@search')->name('customer.search');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
