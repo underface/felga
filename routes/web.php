@@ -20,8 +20,11 @@ Auth::routes();
 Route::prefix('manage')->middleware('role:superadministrator|administrator|')->group(function(){
    Route::get('/', 'ManageController@index')->name('manage.index');
    Route::get('/panel','ManageController@panel')->name('manage.panel');
+	Route::get('/test','ManageController@test')->name('manage.test');
 
    Route::resource('/users', 'UserController', ['names' => ['index'=>'user.index',]]);
+
+	Route::get('/profil', 'ManageController@profil')->name('manage.profil');
 
 });
 
@@ -32,11 +35,7 @@ Route::prefix('category')->middleware('role:superadministrator|administrator|')-
 		Route::post('/store', 'CategoryController@store')->name('category.store');
 		Route::get('/show/{id}', 'CategoryController@show')->name('category.show');
 
-		//wysylanie smsów do grupy z kategorii
-		Route::post('/sendSMS', 'CategoryController@send')->name('sendSMS.send');
-
 });
-
 
 Route::prefix('note')->middleware('role:superadministrator|administrator|')->group(function(){
    Route::get('/','NoteController@index')->name('note.index');
@@ -64,5 +63,4 @@ Route::prefix('customer')->middleware('role:superadministrator|administrator|')-
    Route::post('/search', 'CustomerController@search')->name('customer.search');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/site_403', 'HomeController@error_403')->name('error_403');
+Route::get('/', 'HomeController@index')->name('home');

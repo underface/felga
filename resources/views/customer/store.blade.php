@@ -2,7 +2,6 @@
 
 @section('content')
    <div class="container">
-      <a href="{{ URL::previous() }}" class="btn btn-default btn btn-sm"> Powrót </a><hr />
       <div class="panel panel-success">
          <div class="panel-heading">
             <h3>Dodano klienta!</h3>

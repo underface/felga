@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-	    $users = User::where('id','<>','0')->with('roles')->with('permissions')->get();
+	    $users = User::with('roles')->with('permissions')->get();
         return view('manage.users.index')->withUsers($users);
     }
 

@@ -11,7 +11,7 @@
 		  </button>
 
 		  <!-- Branding Image -->
-		  <a class="navbar-brand" href="{{ url('/home') }}">
+		  <a class="navbar-brand" href="{{ route('home') }}">
 		     CRM <i>demo</i>
 			 <!--{{ config('app.name', 'xyz') }}-->
 		  </a>
@@ -95,6 +95,7 @@
 					 </ul>
 				   </li>
 
+					<li><a href="{{ route('manage.profil')}}"><i class="fa fa-bars" aria-hidden="true"></i> Mój profil</a></li>
 
 			     <li class="dropdown">
 				    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -104,9 +105,10 @@
 
 
 				    <ul class="dropdown-menu" role="menu">
-					   <li><a>{{ Auth::user()->name }}</a></li><li role="separator" class="divider"></li>
-					   <li><a href="{{ route('user.index')}}">Użytkownicy</a>
-					   </li>
+					   <li><a href="{{ route('manage.profil')}}">Profil: {{ Auth::user()->name }}</a></li>
+						<li role="separator" class="divider"></li>
+					   <li><a href="{{ route('user.index')}}">Użytkownicy</a> </li>
+						 <li><a href="{{ route('manage.test')}}">test</a> </li>
 					   <li>
 						<a> <i class="fa fa-usd" aria-hidden="true"></i> 	Balans konta SMS<br />
 							<span class="label label-default">{{ $smsbalance/100}}</b> zł. (tj. {{ round($smsbalance/6) }} SMS)</span>

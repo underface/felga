@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-use App\Category;
-
-class CategoryController extends Controller
+class TEST extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-
-	   return view('category.index')->withCategories($categories);
+        //
     }
 
     /**
@@ -28,8 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-	    $categories = Category::all();
-        return view('category.create')->withCategories($categories);
+        //
     }
 
     /**
@@ -40,17 +34,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, array(
-		   'name' => 'required|unique:categories|min:3|max:50|',
-		   'description' => 'required|min:5|max:100'
-	   ));
-	   $category = new Category;
-	   $category->name = Str::upper($request->name);
-	   $category->description = $request->description;
-	   $category->save();
-
-	   $categories = Category::all();
-	   return view('category.index')->withCategories($categories);
+        //
     }
 
     /**
@@ -61,9 +45,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-	   $category = new Category;
-	   $category = Category::findOrFail($id);
-	   return view('category.show')->withCategory($category);
+        //
     }
 
     /**
@@ -74,8 +56,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-	    $categories = Category::all();
- 	   return view('category.index')->withCategories($categories);
+        //
     }
 
     /**
@@ -87,8 +68,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-	    $categories = Category::all();
- 	  return view('category.index')->withCategories($categories);
+        //
     }
 
     /**
@@ -99,7 +79,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-	    $categories = Category::all();
- 	  return view('category.index')->withCategories($categories);
+        //
     }
 }

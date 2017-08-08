@@ -21,8 +21,13 @@
 				<h4>{{ $customer->name}}</h4>
 				<label><small>Numer telefonu:</label>
 				<h4>{{ $customer->number_phone}}</h4>
-				<label><small>Dodano:</label>
-				<h5>{{ $customer->created_at}}</h5>
+				<label><small>email:</label>
+				<h4>{{ $customer->email}}</h4><hr />
+				Dodano: {{ $customer->created_at}}<br />
+				przez:  {{ $customer->user->name }}
+
+
+
                </div>
 			<div class="panel-footer">
 				{!! Form::open(array('route' => 'customer.add_category')) !!}
@@ -48,12 +53,14 @@
 	               {!! Form::close() !!}
 
                </div>
-               <div class="panel-footer	">
+               <div class="panel-body	">
                   <button type="button" class="btn btn-success btn-block btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Dodaj Notatkę</button>
                   <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target=".bs-example-modal-smSMS"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i> Wyślij SMSa</button>
 
                      <!--<a href="#" class="btn btn-warning btn-sm btn-block">Edytuj Dane klienta</a>-->
                </div>
+
+
             </div>
          </div>
          <!--Modal do dodawania nowej notatki-->

@@ -83,6 +83,10 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 						<div class="form-group">
+							{!! Form::label('title','Tytuł:') !!}
+							{!! Form::text('title',null, array('class'=>'form-control input-lg', 'maxlength'=>'50','placeholder'=>'Tytuł może zostać dodany automatycznie' )) !!}
+						</div>
+						<div class="form-group">
 							{!! Form::label('content','Treść:') !!}
 							{{ Form::textarea('content',null, array('class'=>'form-control', 'rows'=>'3' )) }}
 						</div>

@@ -16,16 +16,14 @@
 
             @if ($errors->any())
                 <div class="alert alert-danger">
+						 <h4>Błąd!</h4>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
 				   @endforeach
                     </ul>
-				Poszukaj numeru lub klienta w bazie!
                 </div>
-			 <div class="well well-sm col-md-6 col-md-offset-3">
-			 	<a href="{{ route('customer.found', old('number_phone') ) }}" class="btn btn-success btn-block btn-lg">Klient o numerze {{ old('number_phone') }} już istnieje. Przejdź dalej</a>
-			</div>
+
             @endif
 
 
@@ -38,6 +36,10 @@
                <div class="form-group">
                   {!! Form::label('number_phone', 'Numer Telefonu:') !!}
                   {!! Form::text('number_phone',null, array('class'=>'form-control input-lg', 'required'=>'','minlength' => '9','maxlength' => '9', 'onkeypress'=>'return isNumberKey(event)' )) !!}
+               </div>
+					<div class="form-group">
+                  {!! Form::label('email', 'Adres email:') !!}
+                  {!! Form::text('email',null, array('class'=>'form-control input-lg', 'minlength' => '5' )) !!}
                </div>
 
 			@if(count($categories))
