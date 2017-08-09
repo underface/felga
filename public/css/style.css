@@ -22,3 +22,8 @@ body { padding-top: 70px;!important; }
 .label a:hover{
 	color:#ccc;
 }
+
+
+li {
+  list-style-type : none;
+}

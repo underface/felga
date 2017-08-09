@@ -97,26 +97,11 @@
 
 					<li><a href="{{ route('manage.profil')}}"><i class="fa fa-bars" aria-hidden="true"></i> Mój profil</a></li>
 
-					<!-- menu superadmin-->
 
-					@role('superadministrator|administrator')
-					<!--Dropdowno Klienci-->
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-					  <i class="fa fa-lock" aria-hidden="true"></i> Zarządzanie pracowniakami <span class="caret"></span>
-					</a>
+@role('superadministrator|administrator')
+	<li><a href="{{ route('admin.index')}}"><i class="fa fa-bars" aria-hidden="true"></i> Panel {{Auth::user()->name}}</a></li>
+@endrole
 
-					<ul class="dropdown-menu" role="menu">
-					  <li><a href="#">Lista pracowników</a></li>
-					  <li><a href="#">Dodawanie pracowników</a></li>
-					  <li><a href="#">Zarządzanie uprawnieniami</a></li>
-
-					  <li><a href="{{ route('manage.test')}}">test</a> </li>
-
-					</ul>
-					</li>
-
-					@endrole
 
 
 

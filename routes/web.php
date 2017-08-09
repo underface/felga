@@ -29,6 +29,20 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|')->g
 
 });
 
+Route::prefix('admin')->middleware('role:superadministrator|administrator')->group(function(){
+   Route::get('/', 'AdminController@index')->name('admin.index');
+	Route::get('/create', 'AdminController@create')->name('admin.create');
+	Route::post('/store', 'AdminController@store')->name('admin.store');
+	Route::get('/show/{id}', 'AdminController@show')->name('admin.show');
+	Route::get('/deleteaccess/{id}', 'AdminController@deleteaccess')->name('admin.deleteaccess');
+	Route::get('/access/{id}', 'AdminController@access')->name('admin.access');
+	Route::get('/edit/{id}', 'AdminController@edit')->name('admin.edit');
+	Route::put('/update/{id}', 'AdminController@update')->name('admin.update');
+
+});
+
+
+
 Route::prefix('category')->middleware('role:superadministrator|administrator|')->group(function(){
 	// Category
 		Route::get('/', 'CategoryController@index')->name('category.index');
