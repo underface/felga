@@ -8,6 +8,8 @@ use Mail;
 
 use Session;
 use App\User;
+use App\Role;
+use App\Permission;
 
 class AdminController extends Controller
 {
@@ -81,8 +83,114 @@ class AdminController extends Controller
 
 	 public function update($id, Request $request)
 	 {
-	 	return "Test";
+	 	$user = User::findOrFail($id);
+
+		$this->validate($request, array(
+			'name' => 'required|min:3|max:255',
+			'login' => 'required|min:3|max:255',
+			'email' => 'required|email|min:7|max:255'
+		));
+		$user->name !== $request->name ? $user->name = $request->name : "" ;
+		$user->login !== $request->login ? $user->login = $request->login : "" ;
+		$user->email !== $request->email ? $user->email = $request->email : "" ;
+		//
+		//$user->name = $request->name;
+		if(!empty($request->password))
+		{
+			$user->password = bcrypt($request->password);
+		}
+
+		$user->save();
+		Session::flash('message', "Zaktualizowano dane użytkowanika");
+		return redirect()->route('admin.show',$user->id);
+
 	 }
 
+	 public function role()
+	 {
+		 $roles = Role::all();
+		 return view('admin.role.index')->withRoles($roles);
+	 }
+
+
+	 public function role_show($id)
+	 {
+		 $role = Role::findOrFail($id);
+		 $permissions = Permission::all();
+		 return view('admin.role.show')->withRole($role)->withPermissions($permissions);
+	 }
+
+
+	 public function role_edit($id, Request $request)
+	 {
+	 	$role = Role::findOrFail($id);
+		$role->permissions()->sync($request->permission);
+
+		Session::flash('message', "Zaktualizowano uprawnienia roli.");
+		return redirect()->route('admin.role.show',$id);
+	 }
+
+	 public function permission()
+	 {
+		 $permissions = Permission::all();
+		 return view('admin.permission.index')->withPermissions($permissions);
+	 }
+
+	 public function permission_edit($id)
+	 {
+		 $permission = Permission::findOrFail($id);
+		 return view('admin.permission.edit')->withPermission($permission);
+	 }
+
+	 public function permission_update($id, Request $request)
+	 {
+
+		 $this->validate($request, array(
+			 'display_name' => 'required|min:3|max:255',
+			 'description' => 'required|min:3|max:255'
+		 ));
+		 $permission = permission::findOrFail($id);
+
+		 $permission->display_name = $request->display_name;
+		 $permission->description = $request->description;
+		 $permission->save();
+
+		 Session::flash('message', "Zaktualizowano uprawnienia id:".$id);
+		 return redirect()->route('admin.permission.index');
+	 }
+
+	 public function permission_delete($id)
+	 {
+		 $permission = Permission::findOrFail($id);
+		 $name = $permission->display_name;
+		 $permission->delete();
+
+		 Session::flash('message', "Usunięto uprawnienie: ".$name);
+		 return redirect()->route('admin.permission.index');
+	 }
+
+
+	 public function permission_create()
+	 {
+		 return view('admin.permission.create');
+	 }
+
+	 public function permission_store(Request $request)
+   {
+		$this ->validate($request, array(
+			'name' => 'required|min:4|max:255|unique:permissions',
+			'display_name' => 'required|min:4|max:255|unique:permissions',
+			'description' => 'required|min:4|unique:permissions'
+		));
+
+		dd($request->name);
+
+		$permision = new Permission;
+		$permission->name = $request->name;
+		$permission->display_name = $request->display_name;
+		$permission->description = $request->description;
+
+		dd($permission);
+   }
 
 }

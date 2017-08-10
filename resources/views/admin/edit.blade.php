@@ -20,6 +20,20 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><h4>Edytuj dane</h4></div>
 			<div class="panel-body">
+
+				@if ($errors->any())
+					 <div class="alert alert-danger">
+						 <h4>Błąd!</h4>
+						  <ul>
+								@foreach ($errors->all() as $error)
+									 <li>{{ $error }}</li>
+								@endforeach
+						  </ul>
+					 </div>
+				@endif
+
+
+
 				{!! Form::open(['route' => ['admin.update', $user->id],'method' => 'PUT']) !!}
 
 				<div class="form-group">

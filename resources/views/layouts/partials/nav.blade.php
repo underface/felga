@@ -98,9 +98,9 @@
 					<li><a href="{{ route('manage.profil')}}"><i class="fa fa-bars" aria-hidden="true"></i> Mój profil</a></li>
 
 
-@role('superadministrator|administrator')
-	<li><a href="{{ route('admin.index')}}"><i class="fa fa-bars" aria-hidden="true"></i> Panel {{Auth::user()->name}}</a></li>
-@endrole
+					@role('superadministrator|administrator')
+						<li><a href="{{ route('admin.index')}}"><i class="fa fa-bars" aria-hidden="true"></i> Panel {{Auth::user()->name}}</a></li>
+					@endrole
 
 
 
@@ -126,6 +126,7 @@
 						  </a>
 
 						  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+							  
 							 {{ csrf_field() }}
 						  </form>
 					   </li>

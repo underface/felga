@@ -39,7 +39,25 @@ Route::prefix('admin')->middleware('role:superadministrator|administrator')->gro
 	Route::get('/edit/{id}', 'AdminController@edit')->name('admin.edit');
 	Route::put('/update/{id}', 'AdminController@update')->name('admin.update');
 
+	Route::prefix('role')->middleware('role:superadministrator')->group(function(){
+		Route::get('/', 'AdminController@role')->name('admin.role.index');
+		Route::get('/show/{id}', 'AdminController@role_show')->name('admin.role.show');
+		Route::put('/edit/{id}', 'AdminController@role_edit')->name('admin.role.edit');
+	});
+
+	Route::prefix('permission')->middleware('role:superadministrator')->group(function(){
+		Route::get('/', 'AdminController@permission')->name('admin.permission.index');
+		Route::get('/edit/{id}', 'AdminController@permission_edit')->name('admin.permission.edit');
+		Route::put('/update/{id}', 'AdminController@permission_update')->name('admin.permission.update');
+		Route::delete('/delete/{id}', 'AdminController@permission_delete')->name('admin.permission.delete');
+		Route::get('/create', 'AdminController@permission_create')->name('admin.permission.create');
+		Route::post('/store', 'AdminController@permission_store')->name('admin.permission.store');
+	});
+
+
 });
+
+
 
 
 
