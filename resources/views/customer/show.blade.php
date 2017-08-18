@@ -130,8 +130,7 @@
                         {{ Form::text('number_phone',$customer->number_phone, array('class'=>'form-control', 'required'=>'', 'readonly'=>'' )) }}
 
                      </div>
-				 	<i>API do SMSÓw nie jest podłączone - dlatego wysyłka jest zablokowana</i>
-                        {!! Form::submit('Wyślij wiadomość', array('class'=>'btn btn-lg btn-success btn-block', 'disabled' =>'')) !!}
+                        {!! Form::submit('Wyślij wiadomość', array('class'=>'btn btn-lg btn-success btn-block')) !!}
                   {!! Form::close() !!}
                </div>
 
