@@ -35,7 +35,7 @@ Route::prefix('admin')->middleware('role:superadministrator|administrator')->gro
 	Route::post('/store', 'AdminController@store')->name('admin.store');
 	Route::get('/show/{id}', 'AdminController@show')->name('admin.show');
 	Route::get('/deleteaccess/{id}', 'AdminController@deleteaccess')->name('admin.deleteaccess');
-	Route::get('/access/{id}', 'AdminController@access')->name('admin.access');
+	Route::post('/access/{id}', 'AdminController@access')->name('admin.access');
 	Route::get('/edit/{id}', 'AdminController@edit')->name('admin.edit');
 	Route::put('/update/{id}', 'AdminController@update')->name('admin.update');
 

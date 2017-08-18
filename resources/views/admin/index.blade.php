@@ -26,7 +26,6 @@
 								<th>Nazwa</th>
 								<th>email</th>
 								<th>Rola</th>
-								<th>Aktywny</th>
 								<th>Opcje</th>
 							</tr>
 					</thead>
@@ -43,32 +42,22 @@
 									@endforeach
 								</td>
 								<td>
-									@if($user->roles->count())
-										<i class="fa fa-toggle-on fa-lg" aria-hidden="true"></i>
-									@else
-										<i class="fa fa-toggle-off fa-lg" aria-hidden="true"></i>
-									@endif
-
-								</td>
-								<td>
-
-								<div class="btn-group">
-								  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								    Opcje <span class="caret"></span>
-								  </button>
-								  <ul class="dropdown-menu">
-								    <li><a href="{{ route('admin.show', $user->id) }}">Profil</a></li>
-								    <li><a href="{{ route('admin.edit',$user->id) }}">Edytuj</a></li>
-									 <li role="separator" class="divider"></li>
-									 @if($user->roles->count())
- 										<li><a href="{{ route('admin.deleteaccess', $user->id)}}">Usuń uprawnienia</a></li>
- 									@else
- 										<li><a href="{{ route('admin.access', $user->id)}}#">Dodaj uprawnienia</a></li>
- 									@endif
 
 
-								  </ul>
-								</div>
+									<!-- Split button -->
+									<div class="btn-group">
+									  <a href="{{ route('admin.show', $user->id) }}" type="button" class="btn btn-default btn-sm"><i class="fa fa-user" aria-hidden="true"></i> Profil</a>
+									  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									    Opcje <span class="caret"></span>
+									    <span class="sr-only">Toggle Dropdown</span>
+									  </button>
+									  <ul class="dropdown-menu">
+ 									    <li><a href="{{ route('admin.edit',$user->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i> Edytuj</a></li>
+ 	 									 <li><a href="{{ route('admin.show', $user->id)}}"><i class="fa fa-universal-access" aria-hidden="true"></i> Aktualizuj dostęp</a></li>
+										 <li><a><small>Data dodania: {{ substr($user->created_at,0,10) }} </small></a></li>
+									  </ul>
+									</div>
+
 								</td>
 							</tr>
 

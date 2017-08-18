@@ -11,10 +11,7 @@
 		  </button>
 
 		  <!-- Branding Image -->
-		  <a class="navbar-brand" href="{{ route('home') }}">
-		     CRM <i>demo</i>
-			 <!--{{ config('app.name', 'xyz') }}-->
-		  </a>
+		  <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }} </a>
 	   </div>
 
 	   <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -35,7 +32,7 @@
 			    <!--Dropdowno Powiadomienia-->
 			    <li class="dropdown">
 			     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-			    	 <i class="fa fa-bell" aria-hidden="true"></i> Powiadomienia
+			    	 <i class="fa fa-bell" aria-hidden="true"></i> 
 					 @if ( $notification_count > 0)
 						  <span class="label label-danger">{{ $notification_count }}</span>
 					 @else
@@ -44,15 +41,15 @@
 					 <span class="caret"></span>
 			     </a>
 
-			     <ul class="dropdown-menu" role="menu">
-			    	 <li><a href="{{ route('note.notification', 'old') }}">Powiadomienia po terminie <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-danger">{{ $notification_old }}</span></a></li>
-<li role="separator" class="divider"></li>
-				 <li><a href="{{ route('note.notification', 'today') }}">Powiadomienia na dziś <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-warning">{{ $notification_today }}</span></a></li>
-<li role="separator" class="divider"></li>
-				 <li><a href="{{ route('note.notification', 'future') }}">Powodomienia w przyszłości <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-default">{{ $notification_future }}</span></a></li>
-<li role="separator" class="divider"></li>
-				 <li><a href="{{ route('note.notification') }}">Wszystkie powiadomienia <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-default">{{ $notification_all }}</span></a></li>
-			     </ul>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ route('note.notification', 'old') }}">Powiadomienia po terminie <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-danger">{{ $notification_old }}</span></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ route('note.notification', 'today') }}">Powiadomienia na dziś <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-warning">{{ $notification_today }}</span></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ route('note.notification', 'future') }}">Powodomienia w przyszłości <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-default">{{ $notification_future }}</span></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ route('note.notification') }}">Wszystkie powiadomienia <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-default">{{ $notification_all }}</span></a></li>
+					</ul>
 			    </li>
 
 				    <!--Dropdowno Notatki-->
@@ -95,9 +92,6 @@
 					 </ul>
 				   </li>
 
-					<li><a href="{{ route('manage.profil')}}"><i class="fa fa-bars" aria-hidden="true"></i> Mój profil</a></li>
-
-
 					@role('superadministrator|administrator')
 						<li><a href="{{ route('admin.index')}}"><i class="fa fa-bars" aria-hidden="true"></i> Panel {{Auth::user()->name}}</a></li>
 					@endrole
@@ -111,7 +105,7 @@
 				    </a>
 
 				    <ul class="dropdown-menu" role="menu">
-					   <li><a href="{{ route('manage.profil')}}">Profil: {{ Auth::user()->name }}</a></li>
+					   <li><a href="{{ route('manage.profil')}}"><i class="fa fa-bars" aria-hidden="true"></i> Mój Profil: {{ Auth::user()->name }}</a></li>
 						<li role="separator" class="divider"></li>
 					   <li>
 						<a> <i class="fa fa-usd" aria-hidden="true"></i> 	Balans konta SMS<br />
@@ -126,7 +120,7 @@
 						  </a>
 
 						  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-							  
+
 							 {{ csrf_field() }}
 						  </form>
 					   </li>
@@ -137,11 +131,3 @@
 	   </div>
     </div>
 </nav>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="alert alert-danger" role="alert"><strong>UWAGA!</strong> System demonstaracyjny. Loginy i hasła testowe. Wprowadzane dane będą kasowane.</div>
-		</div>
-	</div>
-</div>

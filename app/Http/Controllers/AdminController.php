@@ -41,7 +41,7 @@ class AdminController extends Controller
 		 $user->email = $request->email;
 		 $user->password = bcrypt($request->name);
 		 $user->save();
-		 $user->attachRole('administrator');
+		 $user->roles()->sync([3]);
 
 		 Session::flash('message', "Dodano użytkownika: ".$user->name."!");
 
@@ -51,26 +51,29 @@ class AdminController extends Controller
 
 	 public function show($id)
 	 {
+		 	$roles = Role::all();
 		 	$user = User::where('id', $id)->first();
-			return view('admin.show')->withUser($user);
+			return view('admin.show')->withUser($user)->withRoles($roles);
 	 }
+
 
 	 public function deleteaccess($id)
 	 {
-		 $user = User::where('id', $id)->first();
-
-		 $user->detachRoles(['Administrator','Superadministrator','User']);
+		 $user = User::findOrFail($id);
+		 $user->roles()->sync(['4']);
 		 Session::flash('message', "Usunięto dostęp do systemu");
 
 		 return redirect()->route('admin.show',$user->id);
 
 	 }
 
-	 public function access($id)
+	 public function access($id, Request $request)
 	 {
-		 $user = User::where('id', $id)->first();
-		 $user->attachRoles(['Administrator']);
-		 Session::flash('message', "Dodano uprawneinia do systemu");
+		 $user = User::findOrFail($id);
+
+		 $user->roles()->sync($request->roles);
+
+		 Session::flash('message', "Zaktualizowano uprawnienia do systemu");
 
 		 return redirect()->route('admin.show',$user->id);
 	 }

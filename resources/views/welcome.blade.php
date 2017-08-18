@@ -80,7 +80,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-				 CRM
+				 CRM <br />
+				 <img src="http://www.felgiropczyce.pl/wp-content/themes/felgiropczyce/images/logo-renowacja-felg-ropczyce.png" />
                 </div>
 
 
