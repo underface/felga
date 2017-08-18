@@ -161,9 +161,6 @@
 	    		@endif
 
 
-
-
-
             <div class="panel panel-default">
                <div class="panel-heading">
                      <h4>  Notatki
@@ -187,7 +184,7 @@
                         <h5><span class="label label-default">ID: #{{ $note->id}}</span> {{$note->title }}</h5>
                      </div>
                      <div class="panel-body">
-                        {{ $note->content }}
+                        <h5>{{ $note->content }}</h5>
 
                         @if ($note->notification == 1)
                            <br/><span class="label label-danger"><i class="fa fa-bell" aria-hidden="true"></i> Powiadomienie! <i class="fa fa-clock-o" aria-hidden="true"></i>  {{ $note->notification_date }}</span>
@@ -196,7 +193,7 @@
                      <div class="panel-footer">
                         <div class="row">
                            <div class="col-md-10">
-                              <small><i class="fa fa-at" aria-hidden="true"></i>{{ $note->user->name}} <i class="fa fa-calendar-o" aria-hidden="true"></i>: {{ $note->created_at }} <i class="fa fa-calendar-check-o" aria-hidden="true"></i>: {{$note->updated_at }}</small>
+                              <small><i class="fa fa-at" aria-hidden="true"></i>{{ $note->user->name}} <i class="fa fa-calendar-o" aria-hidden="true"></i>: {{ $note->created_at }}</small>
                               @if ($note->notification == 1)
                                  {!! Form::open(array('route' => array('customer.delNotification', $customer->id), 'method' => 'PUT')) !!}
                                     {!! Form::hidden('note_id', $note->id) !!}

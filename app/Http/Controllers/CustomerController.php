@@ -116,17 +116,6 @@ class CustomerController extends Controller
          'number_phone' => 'required'
       ));
 
-      $note = new Note;
-
-      $note->title = "Wysyłka SMS na nr: ".$request->number_phone;
-      $note->content = $request->content;
-      $note->user_id = Auth::user()->id;
-      $note->customer_id= $request->customer_id;
-      $note->notification = 0;
-      $note->notification_date = date('Y-m-d');
-
-      //$note->save(); // zapis wiadomości jako notatki
-
       $curl = curl_init();
       $urlCreate  = "https://api.smslabs.net.pl/apiSms/sendSms";
       $appkey = '082910da5f526163218f13d53ca13c05344bdc64';
@@ -148,6 +137,15 @@ class CustomerController extends Controller
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
       $result = curl_exec($curl);
       $error = curl_error($curl);
+
+		$note = new Note;
+
+      $note->title = "Wysyłka SMS na nr: ".$request->number_phone;
+      $note->content = $request->content." (".$result.")";
+      $note->user_id = Auth::user()->id;
+      $note->customer_id= $request->customer_id;
+      $note->notification = 0;
+      $note->notification_date = date('Y-m-d');
 
       if(!empty($error))
       {

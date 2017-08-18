@@ -17,29 +17,27 @@
                   <h4>#{{ $category->name}}</h4>
                </div>
                <div class="panel-body">
-				{{ $category->description}}
+						{{ $category->description}}
                </div>
 
-               <div class="panel-footer">
-
-                  <button type="button" class="btn btn-danger btn-sm btn-block" disabled ><i class="fa fa-commenting fa-lg" aria-hidden="true"></i> Wyślij SMSa</button>
-
-                     <!--<a href="#" class="btn btn-warning btn-sm btn-block">Edytuj Dane klienta</a>-->
-               </div>
             </div>
          </div>
 
 <!-- Panel z notatkami-->
          <div class="col-md-9">
 
-
-
-
-
             <div class="panel panel-default">
+					@if ($errors->any())
+	                <div class="alert alert-danger">
+							 <h4>Błąd!</h4>
+	                    <p>
+								Nie wpisano treści wiadomości lub nie wybrano klientów do wysyłki!  
+							  </p>
+	                </div>
+	            @endif
 			  {!! Form::open(array('route' => 'sendSMS.send')) !!}
                <div class="panel-heading">
-				<h4>Klienci</h4>
+				<h4>Lista klientów z tej kategorii</h4>
                </div>
                <div class="panel-body">
 				<div class="table-responsive">
@@ -80,10 +78,10 @@
                <div class="panel-footer ">
 				<div class="form-group">
 				   {!! Form::label('content', 'Treść wiadomości:') !!}
-				   {!! Form::textarea('content',null, array('class'=>'form-control ', 'required'=>'', 'rows'=>'3', 'placeholder'=> 'Tu wpisz treść wiadomości SMS' )) !!}
+				   {!! Form::textarea('content', (isset($request->content) ? $request->content : ""), array('class'=>'form-control ', 'required'=>'', 'rows'=>'3', 'placeholder'=> 'Tu wpisz treść wiadomości SMS' )) !!}
 				</div>
-
-				{!! Form::submit('Wyślij', array('class'=>'btn btn-primary ','style'=>'margin:5px 0px')) !!}
+				{{ Form::hidden('category_id', $category->id) }}
+				{!! Form::submit('Wyślij', array('class'=>'btn btn-primary btn-block','style'=>'margin:5px 0px')) !!}
                </div>
 			{!! Form::close() !!}
             </div>

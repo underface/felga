@@ -4,6 +4,7 @@
 @section('content')
     <div class="container">
 	    <div class="col-md-4 col-sm-12">
+
   		  <div class="panel panel-danger">
   		     <div class="panel-heading">
   		  	   <h4><i class="fa fa-external-link" aria-hidden="true"></i> Szybkie Linki</h4>
@@ -42,6 +43,22 @@
   	  </div>
 
        <div class="col-md-4 col-sm-12">
+
+			 <div class="panel panel-default">
+
+				 <div class="panel-body">
+					 {!! Form::open(array('route' => 'customer.search')) !!}
+					  <div class="form-group">
+						  {!! Form::label('search', 'Numer telefonu lub nazwa klienta') !!}
+						  {!! Form::text('search',null, array('class'=>'form-control input-lg', 'minlength'=>'3' ,'required'=>'','placeholder'=>'Wpisz numer telefonu lub nazwa klienta...', 'style'=>'text-transform:uppercase' )) !!}
+					  </div>
+
+						  {!! Form::submit('Szukaj', array('class'=>'btn btn-primary btn-lg btn-block','style'=>'margin:20px 0 20px 0')) !!}
+					  {!! Form::close() !!}
+				 </div>
+			 </div>
+
+			 
 		  <div class="list-group">
 		    <li class="list-group-item active"><h4><i class="fa fa-bell fa-lg" aria-hidden="true"></i></span> Powiadomienia</h4></li>
 		    <a href="{{ route('note.notification', 'old') }}" class="list-group-item">Powiadomienia po terminie <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-danger">{{ $notification_old }}</span></a>

@@ -22,9 +22,7 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|')->g
    Route::get('/', 'ManageController@index')->name('manage.index');
    Route::get('/panel','ManageController@panel')->name('manage.panel');
 	Route::get('/test','ManageController@test')->name('manage.test');
-
    Route::resource('/users', 'UserController', ['names' => ['index'=>'user.index',]]);
-
 	Route::get('/profil', 'ManageController@profil')->name('manage.profil');
 
 });
@@ -61,16 +59,19 @@ Route::prefix('admin')->middleware('role:superadministrator|administrator')->gro
 
 
 
-Route::prefix('category')->middleware('role:superadministrator|administrator|')->group(function(){
+Route::prefix('category')->middleware('role:superadministrator|administrator|employee')->group(function(){
 	// Category
 		Route::get('/', 'CategoryController@index')->name('category.index');
 		Route::get('/create', 'CategoryController@create')->name('category.create');
 		Route::post('/store', 'CategoryController@store')->name('category.store');
 		Route::get('/show/{id}', 'CategoryController@show')->name('category.show');
 
+
+		Route::post('/sendSMS', 'SendSMSContoller@send')->name('sendSMS.send');
+
 });
 
-Route::prefix('note')->middleware('role:superadministrator|administrator|')->group(function(){
+Route::prefix('note')->middleware('role:superadministrator|administrator|employee')->group(function(){
    Route::get('/','NoteController@index')->name('note.index');
    Route::get('/create','NoteController@create')->name('note.create');
    Route::post('/store','NoteController@store')->name('note.store');
@@ -81,7 +82,7 @@ Route::prefix('note')->middleware('role:superadministrator|administrator|')->gro
 });
 
 //zarządzanie widokami klientów
-Route::prefix('customer')->middleware('role:superadministrator|administrator|')->group(function(){
+Route::prefix('customer')->middleware('role:superadministrator|administrator|employee')->group(function(){
    Route::get('/','CustomerController@index')->name('customer.index');
    Route::get('/create', 'CustomerController@create')->name('customer.create');
    Route::post('/store', 'CustomerController@store')->name('customer.store');
