@@ -31,7 +31,7 @@
 	                <div class="alert alert-danger">
 							 <h4>Błąd!</h4>
 	                    <p>
-								Nie wpisano treści wiadomości lub nie wybrano klientów do wysyłki!  
+								Nie wpisano treści wiadomości lub nie wybrano klientów do wysyłki!
 							  </p>
 	                </div>
 	            @endif
@@ -78,7 +78,9 @@
                <div class="panel-footer ">
 				<div class="form-group">
 				   {!! Form::label('content', 'Treść wiadomości:') !!}
-				   {!! Form::textarea('content', (isset($request->content) ? $request->content : ""), array('class'=>'form-control ', 'required'=>'', 'rows'=>'3', 'placeholder'=> 'Tu wpisz treść wiadomości SMS' )) !!}
+				   {!! Form::textarea('content', (isset($request->content) ? $request->content : ""), array('class'=>'form-control ', 'required'=>'', 'rows'=>'3', 'placeholder'=> 'Tu wpisz treść wiadomości SMS', 'id'=>'content_sms' )) !!}
+					<span class="label label-info"><span id="HowMany">0</span> znaków.</span>
+					<span class="label label-warning">1 SMS to max 160 znaków.</span>
 				</div>
 				{{ Form::hidden('category_id', $category->id) }}
 				{!! Form::submit('Wyślij', array('class'=>'btn btn-primary btn-block','style'=>'margin:5px 0px')) !!}
@@ -96,4 +98,14 @@
 
 
    </div>
+@endsection
+@section('scripts')
+
+	<script>
+	$("#content_sms").on("input", function() {
+	 $("#HowMany").text(this.value.length);
+
+	});
+	</script>
+
 @endsection

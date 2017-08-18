@@ -123,7 +123,9 @@
                      {{ Form::hidden('customer_id', $customer->id) }}
                      <div class="form-group">
                         {!! Form::label('content','Treść wiadomości:') !!}
-                        {{ Form::textarea('content',null, array('class'=>'form-control', 'required'=>'', 'rows'=>'3','minlength'=>'20', 'maxlength'=>'160' )) }}
+                        {{ Form::textarea('content',null, array('class'=>'form-control', 'required'=>'', 'rows'=>'3','minlength'=>'20', 'maxlength'=>'160','id'=>'content_sms' )) }}
+								<span class="label label-info"><span id="HowMany">0</span> znaków.</span>
+								<span class="label label-warning">1 SMS to max 160 znaków.</span>
                      </div>
                      <div class="form-group">
                         {!! Form::label('number_phone','Numer telefonu:') !!}
@@ -142,6 +144,7 @@
             </div>
           </div>
          </div>
+
 
 
 
@@ -221,11 +224,15 @@
       </div>
 
 
-
-
-
-
-
-
    </div>
+@endsection
+@section('scripts')
+
+	<script>
+	$("#content_sms").on("input", function() {
+	 $("#HowMany").text(this.value.length);
+
+	});
+	</script>
+
 @endsection
