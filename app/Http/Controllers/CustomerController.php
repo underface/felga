@@ -118,8 +118,8 @@ class CustomerController extends Controller
 
       $curl = curl_init();
       $urlCreate  = "https://api.smslabs.net.pl/apiSms/sendSms";
-      $appkey = '082910da5f526163218f13d53ca13c05344bdc64';
-      $secret = '855f5ae3839d87b20d3a29459a81feb11cfaf2f8';
+		$appkey = config('constants.SmsLabsAppKey');
+		$secret = config('constants.SmsLabsSecretKey');
        $data = array(
            'flash' => '0',
            'expiration' => '0',

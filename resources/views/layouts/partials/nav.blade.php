@@ -32,7 +32,7 @@
 			    <!--Dropdowno Powiadomienia-->
 			    <li class="dropdown">
 			     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-			    	 <i class="fa fa-bell" aria-hidden="true"></i> 
+			    	 <i class="fa fa-bell" aria-hidden="true"></i>
 					 @if ( $notification_count > 0)
 						  <span class="label label-danger">{{ $notification_count }}</span>
 					 @else
