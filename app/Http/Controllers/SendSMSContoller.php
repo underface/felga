@@ -31,6 +31,7 @@ class SendSMSContoller extends Controller
 		 foreach($request->customer_id as $customer_id)
 		 {
 			 $customer = Customer::findOrFail($customer_id);
+			 
 			 $curl = curl_init();
 	       $urlCreate  = "https://api.smslabs.net.pl/apiSms/sendSms";
 	       $appkey = '082910da5f526163218f13d53ca13c05344bdc64';
@@ -38,7 +39,7 @@ class SendSMSContoller extends Controller
 	        $data = array(
 	            'flash' => '0',
 	            'expiration' => '0',
-	            'phone_number' => "+48".$request->number_phone,
+	            'phone_number' => "+48".$customer->number_phone,
 	            'sender_id' => 'SMS INFO',
 	            'message' => $request->content,
 				);
