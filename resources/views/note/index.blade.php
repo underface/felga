@@ -35,7 +35,7 @@
                   <div class="panel-footer">
                      <div class="row">
                         <div class="col-md-10">
-                           <small><i class="fa fa-at" aria-hidden="true"></i>{{ $note->user->name}} <i class="fa fa-calendar-o" aria-hidden="true"></i>: {{ $note->created_at }} <i class="fa fa-calendar-check-o" aria-hidden="true"></i>: {{$note->updated_at }}</small>
+                           <small><i class="fa fa-at" aria-hidden="true"></i>{{ $note->user->name}} <i class="fa fa-calendar-o" aria-hidden="true"></i>: {{ $note->created_at }}</small>
                            @if ($note->notification == 1)
                               {!! Form::open(array('route' => array('customer.delNotification', $note->customer_id), 'method' => 'PUT')) !!}
                                  {!! Form::hidden('note_id', $note->id) !!}
