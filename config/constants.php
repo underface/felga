@@ -12,9 +12,11 @@ return [
     | Use config('your_key') to get the values.
     |
     */
+    
 	 /*SMS Labs config*/
     'SmsLabsAppKey' => env('SmsLabsAppKey','082910da5f526163218f13d53ca13c05344bdc64'),
     'SmsLabsSecretKey' => env('SmsLabsSecretKey','855f5ae3839d87b20d3a29459a81feb11cfaf2f8'),
+    'SmsLabsSenderID' => env('SMS INFO'),
 
 
 ];

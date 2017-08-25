@@ -97,4 +97,10 @@ Route::prefix('customer')->middleware('role:superadministrator|administrator|emp
    Route::post('/search', 'CustomerController@search')->name('customer.search');
 });
 
+
+Route::prefix('messages')->middleware('role:superadministrator|administrator|employee')->group(function(){
+   Route::get('/','MessageController@index')->name('Message.index');
+
+});
+
 Route::get('/home', 'HomeController@index')->name('home');

@@ -108,8 +108,14 @@
 					   <li><a href="{{ route('manage.profil')}}"><i class="fa fa-bars" aria-hidden="true"></i> Mój Profil: {{ Auth::user()->name }}</a></li>
 						<li role="separator" class="divider"></li>
 					   <li>
-						<a> <i class="fa fa-usd" aria-hidden="true"></i> 	Balans konta SMS<br />
-							<span class="label label-default">{{ $smsbalance/100}}</b> zł. (tj. {{ round($smsbalance/6) }} SMS)</span>
+						<a a href="#"> <i class="fa fa-usd" aria-hidden="true"></i> 	Balans konta SMS<br />
+							<span class="label label-default">
+                        @if($smsconnect)
+                        {{ $smsbalance/100}}</b> zł. (tj. {{ round($smsbalance/6) }} SMS)
+                        @else
+                           Bład połączenia!
+                        @endif
+                     </span>
 						</a>
 					   </li><li role="separator" class="divider"></li>
 					   <li>

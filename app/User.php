@@ -34,5 +34,10 @@ class User extends Authenticatable
        return $this -> hasMany('App\Note');
     }
 
+    public function message ()
+    {
+       return $this -> hasMany('App\Message');
+    }
+
 
 }

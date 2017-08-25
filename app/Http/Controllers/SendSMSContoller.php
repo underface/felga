@@ -40,7 +40,7 @@ class SendSMSContoller extends Controller
 	            'flash' => '0',
 	            'expiration' => '0',
 	            'phone_number' => "+48".$customer->number_phone,
-	            'sender_id' => 'SMS INFO',
+	            'sender_id' => config('constants.SmsLabsSenderID');,
 	            'message' => $request->content,
 				);
 	       $result = "";
