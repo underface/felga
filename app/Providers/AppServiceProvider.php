@@ -21,8 +21,8 @@ class AppServiceProvider extends ServiceProvider
 
 			$curl = curl_init();
 			$urlCreate  = "https://api.smslabs.net.pl/apiSms/account";
-			$appkey = config('constant.SmsLabsAppKey');
-			$secret = config('constant.SmsLabsSecretKey');
+			$appkey = config('constants.SmsLabsAppKey');
+			$secret = config('constants.SmsLabsSecretKey');
 			curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 			curl_setopt($curl, CURLOPT_USERPWD, "$appkey:$secret");
 			curl_setopt($curl, CURLOPT_URL, $urlCreate);

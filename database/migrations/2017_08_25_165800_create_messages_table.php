@@ -17,8 +17,10 @@ class CreateMessagesTable extends Migration
           $table->increments('id')->unsign();
           $table->char('status', 8);
           $table->string('sms_id');
+          $table->string('message');
           $table->integer('user_id')->unsigned();
           $table->integer('note_id')->unsigned();
+          $table->integer('customer_id')->unsigned();
           $table->timestamps();
       });
     }

@@ -8,6 +8,7 @@ use App\Customer;
 use App\Note;
 use App\User;
 use App\Category;
+use App\Message;
 use Auth;
 use Session;
 
@@ -109,57 +110,7 @@ class CustomerController extends Controller
       return redirect()->route('customer.show', ['id' => $note->customer_id]);
    }
 
-   public function sendSMS(Request $request)
-   {
-      $this->validate($request, array(
-         'content' => 'min:20|max:160|required',
-         'number_phone' => 'required'
-      ));
 
-      $curl = curl_init();
-      $urlCreate  = "https://api.smslabs.net.pl/apiSms/sendSms";
-		$appkey = config('constants.SmsLabsAppKey');
-		$secret = config('constants.SmsLabsSecretKey');
-       $data = array(
-           'flash' => '0',
-           'expiration' => '0',
-           'phone_number' => "+48".$request->number_phone,
-           'sender_id' => 'SMS INFO',
-           'message' => $request->content,
-
-       );
-       $result = ""; $error ="";
-      curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
-      curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-      curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-      curl_setopt($curl, CURLOPT_USERPWD, "$appkey:$secret");
-      curl_setopt($curl, CURLOPT_URL, $urlCreate);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-      $result = curl_exec($curl);
-      $error = curl_error($curl);
-
-		$note = new Note;
-
-      $note->title = "Wysyłka SMS na nr: ".$request->number_phone;
-      $note->content = $request->content." (".$result.")";
-      $note->user_id = Auth::user()->id;
-      $note->customer_id= $request->customer_id;
-      $note->notification = 0;
-      $note->notification_date = date('Y-m-d');
-
-      if(!empty($error))
-      {
-         Session::flash('message', "Status wysyłki SMSa BŁĄD!: ". $error);
-      }
-      else {
-         $note->save(); // zapis wiadomości jako notatki
-         Session::flash('message', "Status wysyłki SMSa: ". $result);
-      }
-
-      return redirect()->route('customer.show', ['id' => $note->customer_id]);
-
-
-   }
 
    public function found($number)
    {

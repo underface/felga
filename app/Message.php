@@ -15,4 +15,9 @@ class Message extends Model
    {
       return $this->belongsTo('App\Note');
    }
+
+   public function customer()
+   {
+      return $this->belongsTo('App\Customer');
+   }
 }

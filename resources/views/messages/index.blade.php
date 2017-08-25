@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-   <div class="container">
+   <div class="container-fluid">
       <div class="row">
          <div class="col-md-3">
             <div class="panel panel-default">
@@ -40,7 +40,9 @@
                               <tr>
                                  <th>Status</th>
                                  <th>SMS_id</th>
+                                 <th>Opis</th>
                                  <th>Wysłał</th>
+                                 <th>Klient/<br />Numer</th>
                                  <th>Treść</th>
                                  <th>Data</th>
                               </tr>
@@ -51,15 +53,20 @@
                                     <td>
                                        @if($message->status == 'success')
                                           <button class="btn btn-sm btn-success" title="Sukces"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
-                                       @endif
-                                       @if($message->status == 'fail')
+                                       @else
                                           <button class="btn btn-sm btn-danger" title="Błąd"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                                        @endif
                                     </td>
-                                    <td>{{ $message->sms_id }}</td>
-                                    <td>{{ $message->user->name }}</td>
                                     <td>
-                                       @if($message->status == 'fail')
+                                       {{ substr($message->sms_id,0,8) }}<br />
+                                       {{ substr($message->sms_id,8,8) }}<br />
+                                       {{ substr($message->sms_id,16) }}<br />
+                                    </td>
+                                    <td>{{ $message->message }}</td>
+                                    <td><small>{{ $message->user->name }}</small></td>
+                                    <td>{{ $message->customer->name }}<br /><small>{{ $message->customer->number_phone }}</small></td>
+                                    <td>
+                                       @if($message->status !== 'success')
                                           <label class="label label-default">Brak treści z powodu braku wysyłki</label>
                                        @else
                                           {{ $message->note->content }}

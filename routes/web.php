@@ -67,7 +67,7 @@ Route::prefix('category')->middleware('role:superadministrator|administrator|emp
 		Route::get('/show/{id}', 'CategoryController@show')->name('category.show');
 
 
-		Route::post('/sendSMS', 'SendSMSContoller@send')->name('sendSMS.send');
+		Route::post('/sendSMS', 'MessageController@send')->name('sendSMS.send');/////////////////////////////////////////////////////////
 
 });
 
@@ -91,7 +91,7 @@ Route::prefix('customer')->middleware('role:superadministrator|administrator|emp
    Route::put('/delNotification/{id}','CustomerController@delNotification')->name('customer.delNotification')->where('id','[0-9]+');	//PUT - update| POST-dodanie | delete - usunięcie
    Route::delete('/destroy/{id}','CustomerController@destroy')->name('customer.destroy')->where('id','[0-9]+');                       //usuwanie notatki
    Route::post('/addNote/{id}', 'CustomerController@addNote')->name('customer.addNote')->where('id', '[0-9]+');                       //dodanie notatki
-   Route::post('/sendSMS/{id}', 'CustomerController@sendSMS')->name('customer.sendSMS')->where('id', '[0-9]+');                       //dodanie SMSa
+   Route::post('/sendSMS/{id}', 'MessageController@sendSMS')->name('customer.sendSMS')->where('id', '[0-9]+');                       //dodanie SMSa
    Route::get('/found/{number}', 'CustomerController@found')->name('customer.found')->where('number', '[0-9]+');                       //przejście z powtórzeonego numeru klienta!
    Route::get('/searchbox', 'CustomerController@searchbox')->name('customer.searchbox');                       					//formularz wyszykiwarki
    Route::post('/search', 'CustomerController@search')->name('customer.search');
@@ -99,7 +99,7 @@ Route::prefix('customer')->middleware('role:superadministrator|administrator|emp
 
 
 Route::prefix('messages')->middleware('role:superadministrator|administrator|employee')->group(function(){
-   Route::get('/','MessageController@index')->name('Message.index');
+   Route::get('/','MessageController@index')->name('message.index');
 
 });
 

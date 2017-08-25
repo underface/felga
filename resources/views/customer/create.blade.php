@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-   <div class="container">
+   <div class="container-fluid">
       <div class="panel panel-default">
          <div class="panel-heading">
             <h3>Dodaj Klienta</h3>

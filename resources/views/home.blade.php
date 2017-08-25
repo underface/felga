@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
 	    <div class="col-md-4 col-sm-12">
 
   		  <div class="panel panel-danger">
@@ -58,7 +58,7 @@
 				 </div>
 			 </div>
 
-			 
+
 		  <div class="list-group">
 		    <li class="list-group-item active"><h4><i class="fa fa-bell fa-lg" aria-hidden="true"></i></span> Powiadomienia</h4></li>
 		    <a href="{{ route('note.notification', 'old') }}" class="list-group-item">Powiadomienia po terminie <i class="fa fa-bell" aria-hidden="true"></i><span class="label label-danger">{{ $notification_old }}</span></a>

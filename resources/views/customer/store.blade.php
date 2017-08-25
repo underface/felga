@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-   <div class="container">
+   <div class="container-fluid">
       <div class="panel panel-success">
          <div class="panel-heading">
             <h3>Dodano klienta!</h3>
