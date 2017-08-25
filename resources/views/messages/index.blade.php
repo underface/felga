@@ -15,6 +15,8 @@
                      <hr />
                      <label>Smsów do wysłania</label>
                      <h4>{{ round($smsbalance/6)}} zł</h4>
+                     <label>Identyfikator wysyłki</label>
+                     <h4>{{ config('constants.SmsLabsSenderID') }}</h4>
                   @else
                      <h4><label class="label label-warning">Błąd połączania!</label></h4>
                   @endif

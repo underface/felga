@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
 	   <div class="navbar-header">
 
 		  <!-- Collapsed Hamburger -->
@@ -94,6 +94,10 @@
 
 					@role('superadministrator|administrator')
 						<li><a href="{{ route('admin.index')}}"><i class="fa fa-bars" aria-hidden="true"></i> Panel {{Auth::user()->name}}</a></li>
+					@endrole
+
+               @role('superadministrator|administrator|employee')
+						<li><a href="{{ route('message.index')}}"><i class="fa fa-info-circle" aria-hidden="true"></i></i> Panel SMS</a></li>
 					@endrole
 
 
