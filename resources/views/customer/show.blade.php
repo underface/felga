@@ -54,9 +54,14 @@
 
                </div>
                <div class="panel-body	">
-                  <button type="button" class="btn btn-success btn-block btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Dodaj Notatkę</button>
+                  <button type="button" class="btn btn-info btn-block btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Dodaj Notatkę</button>
                   <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target=".bs-example-modal-smSMS"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i> Wyślij SMSa</button>
-
+                  <hr />
+                  @if($customer->checked == 0)
+                     <a href="{{ route('customer.checked', $customer->id) }}" class="btn btn-success btn-block" >Odznacz klienta - zakończono sprzedaż</a>
+                  @else
+                     <a href="{{ route('customer.unchecked', $customer->id) }}" class="btn btn-warning btn-block" >Klient zainteresowany ofertą</a>
+                  @endif
                      <!--<a href="#" class="btn btn-warning btn-sm btn-block">Edytuj Dane klienta</a>-->
                </div>
 

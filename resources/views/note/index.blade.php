@@ -31,6 +31,9 @@
                      @endif
                      <br />
                      <a href="{{ route('customer.show', $note->customer_id) }}" class="btn btn-sm btn-default"><small><i class="fa fa-user" aria-hidden="true"></i>: {{ $note->customer->name }}</small></a>
+                     @if($note->customer->checked == 0)
+                        <a href="{{ route('customer.checked', $note->customer_id) }}" class="btn btn-sm btn-success"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                     @endif
                   </div>
                   <div class="panel-footer">
                      <div class="row">

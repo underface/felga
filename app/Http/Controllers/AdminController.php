@@ -39,7 +39,7 @@ class AdminController extends Controller
 		 $user->name = $request->name;
 		 $user->login = $request->login;
 		 $user->email = $request->email;
-		 $user->password = bcrypt($request->name);
+		 $user->password = bcrypt($request->password);
 		 $user->save();
 		 $user->roles()->sync([3]);
 

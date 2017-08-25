@@ -134,4 +134,26 @@ class CustomerController extends Controller
 	  Session::flash('message', "Wyniki wyszukiwania: ". $customers->count());
    	  return view('customer.index')->withCustomers($customers);
   }
+
+  public function checked($id)
+  {
+     $customer = Customer::findorfail($id);
+
+     $customer->checked = 1;
+
+     $customer->save();
+     Session::flash('message', "Zmieniono status na sprzedaż zakończona!");
+     return redirect()->route('customer.show', $customer->id);
+ }
+
+ public function unchecked($id)
+ {
+    $customer = Customer::findorfail($id);
+
+    $customer->checked = 0;
+
+    $customer->save();
+    Session::flash('message', "Zmieniono status na zainteresowany ofertą!");
+    return redirect()->route('customer.show', $customer->id);
+}
 }

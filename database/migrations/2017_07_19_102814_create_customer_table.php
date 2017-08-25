@@ -19,6 +19,7 @@ class CreateCustomerTable extends Migration
            $table->string('number_phone')->unique();
 			  $table->string('email')->unique();
 			  $table->integer('user_id')->unsigned();
+           $table->integer('checked');
            $table->timestamps();
         });
     }

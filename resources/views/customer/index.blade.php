@@ -30,8 +30,9 @@
                   <tr>
                      <th>ID.</th>
                      <th>Imię i Nazwisko</th>
+                     <th></th>
                      <th>Numer Telefonu</th>
-				 <th>Kategoria</th>
+	                  <th>Kategoria</th>
                      <th></th>
                   </tr>
                </thead>
@@ -40,6 +41,11 @@
                      <tr>
                         <td>{{$customer->id}}</td>
                         <td><a href="{{route('customer.show', $customer->id)}}">{{$customer->name}}</a></td>
+                        <td>
+                           @if($customer->checked == 0)
+                              <a href="{{ route('customer.checked', $customer->id) }}" class="btn btn-sm btn-success"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                           @endif
+                        </td>
                         <td>{{$customer->number_phone}}</td>
 				    <td>
 					    @foreach ($customer->categories as $category)

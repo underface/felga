@@ -95,6 +95,8 @@ Route::prefix('customer')->middleware('role:superadministrator|administrator|emp
    Route::get('/found/{number}', 'CustomerController@found')->name('customer.found')->where('number', '[0-9]+');                       //przejście z powtórzeonego numeru klienta!
    Route::get('/searchbox', 'CustomerController@searchbox')->name('customer.searchbox');                       					//formularz wyszykiwarki
    Route::post('/search', 'CustomerController@search')->name('customer.search');
+   Route::get('/checked/{id}', 'CustomerController@checked')->name('customer.checked')->where('id', '[0-9]+');
+   Route::get('/unchecked/{id}', 'CustomerController@unchecked')->name('customer.unchecked')->where('id', '[0-9]+');
 });
 
 
