@@ -32,15 +32,17 @@ class CustomerController extends Controller
 
       $this->validate($request, array(
          'name'         => 'required|min:6|max:255',
-         'number_phone' => 'unique:customers|required|min:9|max:9',
-			'email' 		   => 'email|min:5'
+         'number_phone' => 'unique:customers|required|min:9|max:9'
+      ),array(
+         'name'=>'Wpisałeś złą nazwę',
+         'number_phone' => 'Taki numer już występuje!'
       ));
       $customer = new Customer;
       $customer->name         = Str::upper($request->name);
       $customer->number_phone = $request->number_phone;
 		$customer->email = $request->email;
       $customer->save();
-	 $customer->categories()->attach($request->categories);
+	   $customer->categories()->attach($request->categories);
       return view('customer.store')->withCustomer($customer);
    }
 

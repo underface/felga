@@ -47,13 +47,12 @@
                            @endif
                         </td>
                         <td>{{$customer->number_phone}}</td>
-				    <td>
-					    @foreach ($customer->categories as $category)
-						    <span class="label label-default"><a href="{{ route('category.show', $category->id) }}">#{{ $category->name }}</a></span>
+         				    <td>
+         					    @foreach ($customer->categories as $category)
+         						    <span class="label label-default"><a href="{{ route('category.show', $category->id) }}">#{{ $category->name }}</a></span>
 
-					    @endforeach
-
-				    </td>
+         					    @endforeach
+         				    </td>
                         <td><a href="{{route('customer.show', $customer->id)}}" class="btn btn-info btn-sm pull-right"> <i class="fa fa-address-card-o fa-lg" aria-hidden="true"></i> Profil & Notatki</a></td>
                      </tr>
 

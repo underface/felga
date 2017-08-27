@@ -74,6 +74,12 @@ class MessageController extends Controller
 
       $error = curl_error($curl);
 
+
+      if($result['status'] == null)
+      {
+         $result['status'] = "ERROR";
+         $result['message'] = "SSL certificate problem: unable to get local issuer certificate";
+      }
       $note = new Note;
          $note->title = "Wysyłka SMS na nr: ".$request->number_phone;
          $note->content = $request->content." (".$result['status']."- ".$result['message'].")";
@@ -155,7 +161,7 @@ class MessageController extends Controller
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
          $result = json_decode(curl_exec($curl),true);
 
-         $error = curl_error($curl);
+         $error= curl_error($curl);
 
          $note = new Note;
          $note->title        = Str::upper("Wysyłka SMS z kategorii #".date('Y-m-d')." na nr: ".$customer->number_phone);
@@ -164,6 +170,12 @@ class MessageController extends Controller
          $note->customer_id  = $customer_id;
          $note->notification = 0;
          $note->notification_date = date('Y-m-d');
+
+         if($result['status'] == null)
+         {
+            $result['status'] = "ERROR";
+            $result['message'] = "SSL certificate problem: unable to get local issuer certificate";
+         }
 
          if($result['status'] !== 'success')
          {
@@ -197,8 +209,8 @@ class MessageController extends Controller
       }
 
       Session::flash('message', 'Wysłano!');
-      // $users = User::where('id', $request->customer_id)->all();
-      return view('category.sendSMS');//->withUsers($users);
+      $customers = Customer::wherein('id', $request->customer_id)->get();
+      return view('category.sendSMS')->withCustomers($customers)->withRequest($request);
 
    }
 }

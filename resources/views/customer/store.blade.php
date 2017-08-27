@@ -54,12 +54,11 @@
                   <div class="btn-group" >
                      {!! Form::label('-','Wybierz typ notatki') !!}
                      <div class="form-group" data-toggle="buttons">
-
-                        <label class="btn btn-primary  active">
-                           <input type="radio" name="notification" id="option_0" value="0" checked>Zwykła Notatka
+                        <label class="btn btn-default  active">
+                           <input type="radio" name="notification" id="option_0" value="0" checked><i class="fa fa-commenting" aria-hidden="true"></i> Zwykła Notatka
                         </label>
-                        <label class="btn btn-primary">
-                           <input type="radio" name="notification" id="option_1" value="1" > Notatka z przypomnieniem
+                        <label class="btn btn-danger">
+                           <input type="radio" name="notification" id="option_1" value="1" ><i class="fa fa-bell" aria-hidden="true"></i> Notatka z przypomnieniem
                         </label>
                      </div>
                   </div>

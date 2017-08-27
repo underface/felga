@@ -31,7 +31,14 @@
   					<li><a a href="{{ route('category.create') }}">Dodaj kategorię</a></li>
   				</ul>
   				<hr />
+         	<h4>Panel SMS</h4>
+            <ul>
+               <li><a href="{{ route('message.index')}}">Panel SMS</a></li>
+            </ul>
+            <hr />
+            <h4>Profil</h4>
 				<ul>
+               <li><a href="{{ route('manage.profil')}}">Mój Profil</a></li>
 					<li><a href="{{ route('logout') }}"
 					    onclick="event.preventDefault();
 							   document.getElementById('logout-form').submit();">

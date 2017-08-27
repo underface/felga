@@ -39,6 +39,7 @@
 					<div class="form-group">
                   {!! Form::label('email', 'Adres email:') !!}
                   {!! Form::text('email',null, array('class'=>'form-control input-lg', 'minlength' => '5' )) !!}
+                  <label class="label label-info">Adres email nie jest wymagany.</label>
                </div>
 
 			@if(count($categories))
